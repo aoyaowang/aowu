@@ -171,6 +171,7 @@ namespace WeAtk.Common
         private System.Timers.Timer _Timer = null;
         public float totalget = 0;
         public float lastturn = 0;
+        public List<Player> lstCurPlayer = new List<Player>();
 
         private void GameStart()
         {
@@ -182,7 +183,7 @@ namespace WeAtk.Common
             {
                 _loop = false;
             }
-
+												lstCurPlayer.Clear();
             if (CurrentGame == 0)
             {
                 if (!Cpk10.Instance().Init())
@@ -541,6 +542,7 @@ namespace WeAtk.Common
 
         private void SendStart()
         {
+        					lstCurPlayer.Clear();
             atkList.Clear();
             if (_Timer != null)
             {
@@ -1948,7 +1950,16 @@ namespace WeAtk.Common
                 player.usedscore += wl.allused;
                 player.left -= wl.allused;
                 wl.content = msg;
-                
+                Player isIn = null;
+                foreach(Player pp in lstCurPlayer){
+                		if(pp == player) {
+                			i	sIn = pp;
+                			break;
+                			}
+                }
+                if(isIn == null) {
+                			lstCurPlayer.Add(player);
+                }
                 atkList.Add(wl);
                 Contant.InsertLog2(player, "攻击：" + msg);
                 string s = buildAt(player) + SetMgr.Instance().核对格式.Replace("{玩家}", (player.me == null ? player.nickname : player.me.ONickName)).Replace("{玩法}", msg);
@@ -3065,9 +3076,12 @@ namespace WeAtk.Common
                 player.usedscore += wl.allused;
                 player.left -= wl.allused;
                 wl.content = msg;
+                player.content = msg;
+                player.num = num;
+                player.up();
 
                 atkList.Add(wl);
-
+																Contant.InsertLog2(player, "管理修改进攻" + msg);
                 return true;
             }
             else
