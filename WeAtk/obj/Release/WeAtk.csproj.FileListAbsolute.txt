@@ -26,3 +26,16 @@ F:\ProGram\Work\WeAtk\WeAtk\obj\Release\WeAtk.logPanel.resources
 M:\ProGram\Work\WeAtk\WeAtk\obj\Release\WeAtk.fightlogPanel.resources
 F:\ProGram\Work\WeAtk\WeAtk\obj\Release\WeAtk.fightlogPanel.resources
 F:\ProGram\Work\WeAtk\WeAtk\obj\Release\WeAtk.csprojResolveAssemblyReference.cache
+D:\aowu\WeAtk\bin\Release\WeAtk.exe.config
+D:\aowu\WeAtk\obj\Release\WeAtk.exe
+D:\aowu\WeAtk\obj\Release\WeAtk.pdb
+D:\aowu\WeAtk\obj\Release\WeAtk.loginPanel.resources
+D:\aowu\WeAtk\obj\Release\WeAtk.fightlogPanel.resources
+D:\aowu\WeAtk\obj\Release\WeAtk.logPanel.resources
+D:\aowu\WeAtk\obj\Release\WeAtk.MainForm.resources
+D:\aowu\WeAtk\obj\Release\WeAtk.Properties.Resources.resources
+D:\aowu\WeAtk\obj\Release\WeAtk.settingPanel.resources
+D:\aowu\WeAtk\obj\Release\WeAtk.startPanel.resources
+D:\aowu\WeAtk\obj\Release\WeAtk.csproj.GenerateResource.Cache
+D:\aowu\WeAtk\bin\Release\WeAtk.exe
+D:\aowu\WeAtk\bin\Release\WeAtk.pdb

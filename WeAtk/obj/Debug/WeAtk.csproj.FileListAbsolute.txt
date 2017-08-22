@@ -25,3 +25,6 @@ F:\ProGram\Work\WeAtk\WeAtk\obj\Debug\WeAtk.startPanel.resources
 F:\ProGram\Work\WeAtk\WeAtk\obj\Debug\WeAtk.csproj.GenerateResource.Cache
 F:\ProGram\Work\WeAtk\WeAtk\obj\Debug\WeAtk.csprojResolveAssemblyReference.cache
 F:\ProGram\Work\WeAtk\WeAtk\obj\Debug\WeAtk.fightlogPanel.resources
+D:\aowu\WeAtk\bin\Debug\WeAtk.exe.config
+D:\aowu\WeAtk\obj\Debug\WeAtk.exe
+D:\aowu\WeAtk\obj\Debug\WeAtk.pdb

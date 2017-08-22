@@ -298,6 +298,26 @@ namespace WeAtk
                 }
                 this.listView1.EndUpdate();
 
+                this.listView5.BeginUpdate();
+                this.listView5.Items.Clear();
+                //GameMgr.Instance().Players.Clear();
+                for (int i = 0; i < GameMgr.Instance().lstCurPlayer.Count; ++i)
+                {
+                    Player dr = GameMgr.Instance().lstCurPlayer[i];
+
+                    ListViewItem lvi = new ListViewItem(dr.playername);
+                    lvi.SubItems.Add(dr.nickname);
+                    lvi.SubItems.Add(dr.type == 0 ? "普通玩家" : "虚拟玩家");
+                    lvi.SubItems.Add(dr.left.ToString());
+                    lvi.SubItems.Add(dr.num);
+                    lvi.SubItems.Add(dr.content);
+                    lvi.SubItems.Add(dr.usedscore.ToString());
+                    lvi.SubItems.Add(dr.perscore.ToString());
+
+                    this.listView5.Items.Add(lvi);
+                }
+                this.listView5.EndUpdate();
+
                 playercount.Text = GameMgr.Instance().Players.Count.ToString();
                 totalcoin.Text = nAll.ToString();
                 allget.Text = GameMgr.Instance().totalget.ToString();
@@ -468,6 +488,20 @@ namespace WeAtk
             }
 
             AtkChanged();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            listView1.Visible = false;
+            listView5.Visible = true;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton2.Checked = false;
+            listView1.Visible = true;
+            listView5.Visible = false;
         }
     }
 }

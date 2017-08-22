@@ -1953,7 +1953,7 @@ namespace WeAtk.Common
                 Player isIn = null;
                 foreach(Player pp in lstCurPlayer){
                 		if(pp == player) {
-                			i	sIn = pp;
+                			isIn = pp;
                 			break;
                 			}
                 }
