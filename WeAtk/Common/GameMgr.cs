@@ -597,6 +597,10 @@ namespace WeAtk.Common
             }
 
             List<result> rs = CurrentGame == 0 ? Cpk10.Instance().Over(this.atkList) : feiting.Instance().Over(this.atkList);
+            
+            string ssnum= CurrentGame == 0 ? Cpk10.Instance().list[0].num : feiting.Instance().list[0].num;
+            string ssdata= CurrentGame == 0 ? Cpk10.Instance().list[0].data : feiting.Instance().list[0].data;
+            string sstime = CurrentGame == 0 ? Cpk10.Instance().list[0].time : feiting.Instance().list[0].time;
             foreach (result rrs in rs)
             {
                 zhong += SetMgr.Instance().结算格式.Replace("{玩家}", (rrs.player.me == null ? rrs.player.nickname : rrs.player.me.ONickName)).Replace("{中奖内容}", rrs.sContent).Replace("{得分}", ((int)rrs.nScore).ToString()) + "\n";
@@ -605,7 +609,8 @@ namespace WeAtk.Common
                 totalget -= (int)rrs.nScore;
                 lastturn -= (int)rrs.nScore;
                 rrs.player.up();
-                Contant.InsertLog2(rrs.player, "玩家中奖:" + rrs.sContent + " 分数:" + rrs.nScore.ToString() + " 期数:" + Cpk10.Instance().list[0].time + " " + Cpk10.Instance().list[0].num);
+                Contant.InsertLog2(rrs.player, "玩家中奖:" + rrs.sContent + " 分数:" + rrs.nScore.ToString() + " 期数:" + sstime + " " + ssnum);
+                Contant.Log(player,"中奖",rrs.nScore,CurrentGame,ssnum,ssdata);
             }
             sover = sover.Replace("{中奖名单}", zhong);
             atkList.Clear();
@@ -1961,6 +1966,7 @@ namespace WeAtk.Common
                 			lstCurPlayer.Add(player);
                 }
                 atkList.Add(wl);
+                Contant.Log(player,"进攻",wl.allused,CurrentGame.ToString(),num,"");
                 Contant.InsertLog2(player, "攻击：" + msg);
                 string s = buildAt(player) + SetMgr.Instance().核对格式.Replace("{玩家}", (player.me == null ? player.nickname : player.me.ONickName)).Replace("{玩法}", msg);
                 //sendMsg(s, player);
@@ -2099,6 +2105,7 @@ namespace WeAtk.Common
 
             Contant.InsertLog("同意了" + player.nickname + "的改分请求。" + (m.nValue > 0 ? "+" : "") + m.nValue);
             Contant.InsertLog2(player, "同意了上粮" + m.nValue.ToString());
+            Contant.Log(player,"上粮",m.nValue,"",num,"");
         }
 
         public void DeagreeAddLiang(waitLiang m)
@@ -3082,6 +3089,7 @@ namespace WeAtk.Common
 
                 atkList.Add(wl);
 																Contant.InsertLog2(player, "管理修改进攻" + msg);
+																Contant.Log(player,"GM修改进攻",wl.allused,CurrentGame,num,"");
                 return true;
             }
             else

@@ -168,5 +168,24 @@ namespace WeAtk.Common
 
             if (changeFunc2 != null) changeFunc2();
         }
+        
+        public static void Log(Player player,string stype,float usescore,string game,string num,string data) {
+            string sql = "insert into statement (时间,玩家,群昵称,玩家类型,类型,游戏,剩余分数,分数变化,期号,使用分数,玩法内容,分析内容,开奖) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')";
+            sql = string.Format(sql, DateTime.Now.ToString(), 
+                player.playername.Replace("\'", "\\\'"), 
+                player.nickname.Replace("\'", "\\\'"),
+                player.type == 0 ? "普通玩家" : "虚拟玩家",
+                stype.Replace("\'","\\\'"),
+                game.Replace("\'","\\\'"),
+                player.left.ToString(),
+                usescore.ToString(),
+                num,
+                player.usedscore.ToString(),
+                player.content.Replace("\'","\\\'"),
+                "",
+                data);
+            Reader.Instance().QueryPlayer(sql);
+        
+        }
     }
 }
