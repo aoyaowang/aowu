@@ -3073,7 +3073,7 @@ namespace WeAtk.Common
                         xz--;
                     }
                 }
-                player.usedscore += wl.allused;
+                player.usedscore = wl.allused;
                 player.left -= wl.allused;
                 wl.content = msg;
                 player.content = msg;
