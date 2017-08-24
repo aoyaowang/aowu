@@ -39,3 +39,4 @@ D:\aowu\WeAtk\obj\Release\WeAtk.startPanel.resources
 D:\aowu\WeAtk\obj\Release\WeAtk.csproj.GenerateResource.Cache
 D:\aowu\WeAtk\bin\Release\WeAtk.exe
 D:\aowu\WeAtk\bin\Release\WeAtk.pdb
+D:\aowu\WeAtk\obj\Release\WeAtk.csprojResolveAssemblyReference.cache

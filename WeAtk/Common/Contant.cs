@@ -15,7 +15,11 @@ namespace WeAtk.Common
         public string strbegin;
         public string strend;
     }
-
+    public class tmpPlayer
+    {
+        public string playername;
+        public float value;
+    }
     class Contant
     {
         //Kingooo123123
@@ -178,7 +182,7 @@ namespace WeAtk.Common
                 stype.Replace("\'","\\\'"),
                 game.Replace("\'","\\\'"),
                 player.left.ToString(),
-                usescore.ToString(),
+                usescore,
                 num,
                 player.usedscore.ToString(),
                 player.content.Replace("\'","\\\'"),

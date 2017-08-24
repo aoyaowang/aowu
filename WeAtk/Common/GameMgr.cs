@@ -610,7 +610,7 @@ namespace WeAtk.Common
                 lastturn -= (int)rrs.nScore;
                 rrs.player.up();
                 Contant.InsertLog2(rrs.player, "玩家中奖:" + rrs.sContent + " 分数:" + rrs.nScore.ToString() + " 期数:" + sstime + " " + ssnum);
-                Contant.Log(player,"中奖",rrs.nScore,CurrentGame,ssnum,ssdata);
+                Contant.Log(rrs.player,"结算",rrs.nScore,CurrentGame.ToString(),ssnum,ssdata);
             }
             sover = sover.Replace("{中奖名单}", zhong);
             atkList.Clear();
@@ -2246,7 +2246,7 @@ namespace WeAtk.Common
                         i--;
                     }
                 }
-
+                Contant.Log(cur, "清空内容", 0, CurrentGame.ToString(), num, "");
                 return true;
             } else
             {
@@ -3089,7 +3089,7 @@ namespace WeAtk.Common
 
                 atkList.Add(wl);
 																Contant.InsertLog2(player, "管理修改进攻" + msg);
-																Contant.Log(player,"GM修改进攻",wl.allused,CurrentGame,num,"");
+																Contant.Log(player,"GM修改进攻",wl.allused,CurrentGame.ToString(),num,"");
                 return true;
             }
             else
