@@ -19,6 +19,7 @@ namespace WeAtk.Common
     {
         public string playername;
         public float value;
+        public int back = 0;
     }
     class Contant
     {

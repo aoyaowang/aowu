@@ -2165,6 +2165,13 @@ namespace WeAtk.Common
                 MsgAll(strZhang);
         }
 
+        public void BroBack(string back, bool b)
+        {
+            AtkChange();
+            if (b)
+                MsgAll(back);
+        }
+
         public void MsgXiu()
         {
             /*string m = "";

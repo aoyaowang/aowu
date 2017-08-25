@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using WeAtk.Common;
+using WeAtk.User;
 
 namespace WeAtk
 {
@@ -51,8 +53,12 @@ namespace WeAtk
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string sql = "select * from statement where 时间 >={0} and 时间 <={1}";
-            string.Format(sql, dateTimePicker1.Text, dateTimePicker2.Text);
+            string sql = "select * from statement";
+
+            DateTime dta;
+            dta = dateTimePicker1.Value;
+            DateTime dtb;
+            dtb = dateTimePicker2.Value;
             DataTable data = Reader.Instance().ReadPlayerData(sql + " order by 时间 desc");
             if (data == null) return;
             this.listView2.BeginUpdate();
@@ -79,6 +85,12 @@ namespace WeAtk
                 float fc = 0;
                 float.TryParse(change, out fc);
 
+                DateTime dt1;
+                DateTimeFormatInfo dtFormat2 = new DateTimeFormatInfo();
+                dtFormat2.ShortDatePattern = "yyyy/MM/dd HH/mm/ss";
+                dt1 = Convert.ToDateTime(time, dtFormat2);
+
+                if (dt1 < dta || dt1 > dtb) continue;
                 if (!checkBox1.Checked && stype == "上分" && fc > 0) continue;
                 if (!checkBox2.Checked && stype == "上分" && fc < 0) continue;
                 if (!checkBox3.Checked && stype == "返还") continue;
@@ -165,6 +177,105 @@ namespace WeAtk
                 }
             }
 
+            string ssback = "";
+            foreach (tmpPlayer pp in lst)
+            {
+                Player pl = null;
+                foreach (Player ttp in GameMgr.Instance().Players)
+                {
+                    if (ttp.playername == pp.playername)
+                    {
+                        pl = ttp;
+                        break;
+                    }
+                }
+                if (pl == null) continue;
+                string m = "0", mx = "0", v = "0";
+                if (checkBox10.Checked)
+                {
+                    m = textBox1.Text;
+                    mx = textBox2.Text;
+                    v = textBox3.Text;
+
+                    int nm = int.Parse(m);
+                    int nmx = int.Parse(mx);
+                    int nv = int.Parse(v);
+                    if (pp.value >= nm || pp.value <= nmx)
+                    {
+                        int back = (int)pp.value * nv / 100;
+                        pp.back += back;
+                    }
+                }
+                if (checkBox11.Checked)
+                {
+                    m = textBox9.Text;
+                    mx = textBox8.Text;
+                    v = textBox7.Text;
+
+
+                    int nm = int.Parse(m);
+                    int nmx = int.Parse(mx);
+                    int nv = int.Parse(v);
+                    if (pp.value >= nm || pp.value <= nmx)
+                    {
+                        int back = (int)pp.value * nv / 100;
+                        pp.back += back;
+                    }
+                }
+                if (checkBox12.Checked)
+                {
+                    m = textBox6.Text;
+                    mx = textBox5.Text;
+                    v = textBox4.Text;
+
+                    int nm = int.Parse(m);
+                    int nmx = int.Parse(mx);
+                    int nv = int.Parse(v);
+                    if (pp.value >= nm || pp.value <= nmx)
+                    {
+                        int back = (int)pp.value * nv / 100;
+                        pp.back += back;
+                    }
+                }
+                if (checkBox13.Checked)
+                {
+                    m = textBox12.Text;
+                    mx = textBox11.Text;
+                    v = textBox10.Text;
+
+                    int nm = int.Parse(m);
+                    int nmx = int.Parse(mx);
+                    int nv = int.Parse(v);
+                    if (pp.value >= nm || pp.value <= nmx)
+                    {
+                        int back = (int)pp.value * nv / 100;
+                        pp.back += back;
+                    }
+                }
+
+
+            }
+
+
+            foreach (tmpPlayer pp in lst)
+            {
+                Player pl = null;
+                foreach (Player ttp in GameMgr.Instance().Players)
+                {
+                    if (ttp.playername == pp.playername)
+                    {
+                        pl = ttp;
+                        break;
+                    }
+                }
+                if (pl == null) continue;
+
+                ssback += "@" + pl.nickname + " 返还:" + pp.back.ToString() + "\r\n";
+                pl.left += pp.back;
+                Contant.Log(pl, "返还", pp.back, "", "", "");
+            }
+
+            GameMgr.Instance().BroBack(ssback, checkBox9.Checked);
         }
     }
 }
