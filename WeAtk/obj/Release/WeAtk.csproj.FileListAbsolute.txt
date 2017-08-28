@@ -40,3 +40,17 @@ D:\aowu\WeAtk\obj\Release\WeAtk.csproj.GenerateResource.Cache
 D:\aowu\WeAtk\bin\Release\WeAtk.exe
 D:\aowu\WeAtk\bin\Release\WeAtk.pdb
 D:\aowu\WeAtk\obj\Release\WeAtk.csprojResolveAssemblyReference.cache
+D:\Cocos\aowu\WeAtk\bin\Release\WeAtk.exe.config
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.exe
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.pdb
+D:\Cocos\aowu\WeAtk\bin\Release\WeAtk.exe
+D:\Cocos\aowu\WeAtk\bin\Release\WeAtk.pdb
+D:\Cocos\aowu\WeAtk\bin\Release\Newtonsoft.Json.dll
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.loginPanel.resources
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.fightlogPanel.resources
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.logPanel.resources
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.MainForm.resources
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.Properties.Resources.resources
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.settingPanel.resources
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.startPanel.resources
+D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.csproj.GenerateResource.Cache
