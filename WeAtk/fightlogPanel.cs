@@ -177,6 +177,73 @@ namespace WeAtk
 回合损失粮草
 回合获得粮草
 回合流水粮草*/
+            string sql = "select * from statement";
+
+            DateTime dta;
+            dta = dateTimePicker1.Value;
+            DateTime dtb;
+            dtb = dateTimePicker2.Value;
+            DataTable data = Reader.Instance().ReadPlayerData(sql + " order by 时间 desc");
+            if (data == null) return;
+
+            this.listView2.BeginUpdate();
+            this.listView2.Items.Clear();
+            //DataTable data = Reader.Instance().ReadPlayerData("select * from players");
+            for (int i = 0; i < data.Rows.Count; ++i)
+            {
+                //时间,玩家,群昵称,玩家类型,类型,游戏,剩余分数,分数变化,期号,使用分数,玩法内容,分析内容,开奖
+                DataRow dr = data.Rows[i];
+                string time = (string)dr["时间"];
+                string playername = (string)dr["玩家"];
+                string nickname = (string)dr["群昵称"];
+                string playertype = (string)dr["玩家类型"];
+                string stype = (string)dr["类型"];
+                string game = (string)dr["游戏"];
+                game = game == "0" ? "赛车" : "游艇";
+                string left = (string)dr["剩余分数"];
+                string change = (string)dr["分数变化"];
+                string num = (string)dr["期号"];
+                string usescore = (string)dr["使用分数"];
+                string content = (string)dr["玩法内容"];
+                string sdata = (string)dr["开奖"];
+
+                float fc = 0;
+                float.TryParse(change, out fc);
+
+                DateTime dt1;
+                DateTimeFormatInfo dtFormat2 = new DateTimeFormatInfo();
+                dtFormat2.ShortDatePattern = "yyyy/MM/dd HH/mm/ss";
+                dt1 = Convert.ToDateTime(time, dtFormat2);
+
+                if (dt1 < dta || dt1 > dtb) continue;
+                if (!checkBox1.Checked && stype == "上分" && fc > 0) continue;
+                if (!checkBox2.Checked && stype == "上分" && fc < 0) continue;
+                if (!checkBox3.Checked && stype == "返还") continue;
+                if (!checkBox4.Checked && stype == "进攻") continue;
+                if (!checkBox5.Checked && stype == "GM修改进攻") continue;
+                if (!checkBox7.Checked && stype == "清空内容") continue;
+                if (!checkBox8.Checked && stype == "结算") continue;
+                if (checkBox14.Checked && playertype == "虚拟玩家") continue;
+
+
+                ListViewItem lvi = new ListViewItem(time);
+                lvi.SubItems.Add(playername);
+                lvi.SubItems.Add(nickname);
+                lvi.SubItems.Add(playertype);
+                lvi.SubItems.Add(stype);
+                lvi.SubItems.Add(game);
+                lvi.SubItems.Add(left);
+                lvi.SubItems.Add(change);
+                lvi.SubItems.Add(num);
+                lvi.SubItems.Add(usescore);
+                lvi.SubItems.Add(content);
+                lvi.SubItems.Add(sdata);
+
+                this.listView2.Items.Add(lvi);
+            }
+            this.listView2.EndUpdate();
+
+
             List<tmpPlayer> lst = new List<tmpPlayer>();
             for (int i = 0; i < listView2.Items.Count; ++i)
             {
