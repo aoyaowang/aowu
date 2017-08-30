@@ -99,6 +99,14 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button3 = new System.Windows.Forms.Button();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -240,6 +248,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.textBox10);
             this.panel2.Controls.Add(this.label16);
@@ -548,7 +557,7 @@
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(416, 12);
+            this.checkBox9.Location = new System.Drawing.Point(585, 12);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(120, 16);
             this.checkBox9.TabIndex = 3;
@@ -644,9 +653,9 @@
             this.columnHeader14,
             this.columnHeader15,
             this.columnHeader16});
-            this.listView2.Location = new System.Drawing.Point(157, 296);
+            this.listView2.Location = new System.Drawing.Point(379, 316);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(775, 311);
+            this.listView2.Size = new System.Drawing.Size(553, 291);
             this.listView2.TabIndex = 9;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -710,11 +719,84 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // listView3
+            // 
+            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader17,
+            this.columnHeader18});
+            this.listView3.Location = new System.Drawing.Point(157, 316);
+            this.listView3.MultiSelect = false;
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(216, 291);
+            this.listView3.TabIndex = 11;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
+            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "玩家";
+            this.columnHeader17.Width = 137;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "玩家类型";
+            this.columnHeader18.Width = 69;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(377, 298);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(65, 12);
+            this.label19.TabIndex = 12;
+            this.label19.Text = "粮草变化：";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(564, 298);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(65, 12);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "粮草流水：";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(448, 298);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(0, 12);
+            this.label21.TabIndex = 14;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(624, 298);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(0, 12);
+            this.label22.TabIndex = 15;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(409, 8);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(170, 23);
+            this.button4.TabIndex = 36;
+            this.button4.Text = "返还选中的玩家";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // fightlogPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 600);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.listView3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.button2);
@@ -732,6 +814,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "logPanel";
+            this.Load += new System.EventHandler(this.fightlogPanel_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -814,5 +897,13 @@
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button button4;
     }
 }
