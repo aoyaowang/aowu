@@ -145,7 +145,7 @@ namespace WeAtk.Common
             {
                 if (!_Started && value)
                 {
-                    _waitbegin = true;
+                    //_waitbegin = true;
                     GameStart();
                 }
                 else
@@ -356,7 +356,7 @@ namespace WeAtk.Common
                                     else
                                     {
                                         MsgAll("今日北京赛车结束，夜场幸运飞艇马上开始！");
-                                        _waitbegin = true;
+                                        //_waitbegin = true;
                                         CurrentGame = 1;
                                         GameStart();
                                     }
@@ -400,7 +400,7 @@ namespace WeAtk.Common
                                     else
                                     {
                                         MsgEnd();
-                                        _waitbegin = true;
+                                        //_waitbegin = true;
                                         CurrentGame = 0;
                                         GameStart();
                                     }
@@ -609,7 +609,7 @@ namespace WeAtk.Common
                 totalget -= (int)rrs.nScore;
                 lastturn -= (int)rrs.nScore;
                 rrs.player.up();
-                Contant.InsertLog2(rrs.player, "玩家中奖:" + rrs.sContent + " 分数:" + rrs.nScore.ToString() + " 期数:" + sstime + " " + ssnum);
+                //Contant.InsertLog2(rrs.player, "玩家中奖:" + rrs.sContent + " 分数:" + rrs.nScore.ToString() + " 期数:" + sstime + " " + ssnum);
                 Contant.Log(rrs.player,"结算",rrs.nScore,CurrentGame.ToString(),ssnum,ssdata);
             }
             sover = sover.Replace("{中奖名单}", zhong);
@@ -685,7 +685,7 @@ namespace WeAtk.Common
                         else
                         {
                             MsgAll("今日北京赛车结束，夜场幸运飞艇马上开始！");
-                            _waitbegin = true;
+                            //_waitbegin = true;
                             CurrentGame = 1;
                             GameStart();
                         }
@@ -716,7 +716,7 @@ namespace WeAtk.Common
                         else
                         {
                             MsgEnd();
-                            _waitbegin = true;
+                            //_waitbegin = true;
                             CurrentGame = 0;
                             GameStart();
                         }
@@ -1096,7 +1096,7 @@ namespace WeAtk.Common
                 atkList.Remove(lastatk);
                 sendMsg("最后发送的攻击消息已取消。", player);
 
-                Contant.InsertLog2(player, "删除最后攻击");
+                //Contant.InsertLog2(player, "删除最后攻击");
             }
         }
         void ChaKan(string msg, string key, Player player)
@@ -1967,7 +1967,7 @@ namespace WeAtk.Common
                 }
                 atkList.Add(wl);
                 Contant.Log(player,"进攻",wl.allused,CurrentGame.ToString(),num,"");
-                Contant.InsertLog2(player, "攻击：" + msg);
+                //Contant.InsertLog2(player, "攻击：" + msg);
                 string s = buildAt(player) + SetMgr.Instance().核对格式.Replace("{玩家}", (player.me == null ? player.nickname : player.me.ONickName)).Replace("{玩法}", msg);
                 //sendMsg(s, player);
                 int nalluse = 0;
@@ -3095,7 +3095,7 @@ namespace WeAtk.Common
                 player.up();
 
                 atkList.Add(wl);
-																Contant.InsertLog2(player, "管理修改进攻" + msg);
+																//Contant.InsertLog2(player, "管理修改进攻" + msg);
 																Contant.Log(player,"GM修改进攻",wl.allused,CurrentGame.ToString(),num,"");
                 return true;
             }

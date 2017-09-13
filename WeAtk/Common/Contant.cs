@@ -21,6 +21,13 @@ namespace WeAtk.Common
         public float value;
         public int back = 0;
     }
+    public class hejiPlayer
+    {
+        public string player;
+        public string type;
+        public float qiang = 0;
+        public float liushui = 0;
+    }
     class Contant
     {
         //Kingooo123123

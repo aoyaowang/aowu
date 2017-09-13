@@ -43,3 +43,14 @@ D:\Cocos\aowu\WeAtk\obj\Debug\WeAtk.Properties.Resources.resources
 D:\Cocos\aowu\WeAtk\obj\Debug\WeAtk.settingPanel.resources
 D:\Cocos\aowu\WeAtk\obj\Debug\WeAtk.startPanel.resources
 D:\Cocos\aowu\WeAtk\obj\Debug\WeAtk.csproj.GenerateResource.Cache
+D:\aowu\WeAtk\bin\Debug\WeAtk.exe
+D:\aowu\WeAtk\bin\Debug\WeAtk.pdb
+D:\aowu\WeAtk\obj\Debug\WeAtk.csprojResolveAssemblyReference.cache
+D:\aowu\WeAtk\obj\Debug\WeAtk.loginPanel.resources
+D:\aowu\WeAtk\obj\Debug\WeAtk.fightlogPanel.resources
+D:\aowu\WeAtk\obj\Debug\WeAtk.logPanel.resources
+D:\aowu\WeAtk\obj\Debug\WeAtk.MainForm.resources
+D:\aowu\WeAtk\obj\Debug\WeAtk.Properties.Resources.resources
+D:\aowu\WeAtk\obj\Debug\WeAtk.settingPanel.resources
+D:\aowu\WeAtk\obj\Debug\WeAtk.startPanel.resources
+D:\aowu\WeAtk\obj\Debug\WeAtk.csproj.GenerateResource.Cache

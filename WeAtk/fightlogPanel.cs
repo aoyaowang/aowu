@@ -79,6 +79,15 @@ namespace WeAtk
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (textBox13.Text == "")
+            {
+                listView3.Visible = true;
+                listView4.Visible = false;
+            }
+            else {
+                listView4.Visible = true;
+                listView3.Visible = false;
+            }
             string sql = "select * from statement";
 
             DateTime dta;
@@ -89,6 +98,7 @@ namespace WeAtk
             if (data == null) return;
 
             Dictionary<string, string> lstA = new Dictionary<string, string>();
+            Dictionary<string, hejiPlayer> lstB = new Dictionary<string, hejiPlayer>();
             this.listView2.BeginUpdate();
             this.listView2.Items.Clear();
             //DataTable data = Reader.Instance().ReadPlayerData("select * from players");
@@ -129,6 +139,17 @@ namespace WeAtk
                 if (checkBox14.Checked && playertype == "虚拟玩家") continue;
 
                 lstA[playername] = stype;
+                if (!lstB.ContainsKey(playername))
+                {
+                    lstB[playername] = new hejiPlayer();
+                }
+                lstB[playername].player = playername;
+                lstB[playername].type = playertype;
+                if (stype == "进攻")
+                    lstB[playername].qiang -= fc;
+                else if (stype == "结算")
+                    lstB[playername].qiang += fc;
+                lstB[playername].liushui += fc;
 
                 /*ListViewItem lvi = new ListViewItem(time);
                 lvi.SubItems.Add(playername);
@@ -158,6 +179,36 @@ namespace WeAtk
                 
             }
             this.listView3.EndUpdate();
+
+            if (textBox13.Text != "") {
+                float fallq = 0;
+                float falll = 0;
+
+                this.listView4.BeginUpdate();
+                this.listView4.Items.Clear();
+                foreach (KeyValuePair<string, hejiPlayer> kvp in lstB)
+                {
+                    if (kvp.Value.player.IndexOf(textBox13.Text) >= 0)
+                    {
+                        fallq += kvp.Value.qiang;
+                        falll += kvp.Value.liushui;
+                        //DataTable data = Reader.Instance().ReadPlayerData("select * from players");
+                        ListViewItem lvix = new ListViewItem(kvp.Key);
+                        lvix.SubItems.Add(kvp.Value.type);
+                        lvix.SubItems.Add(kvp.Value.qiang.ToString());
+                        lvix.SubItems.Add(kvp.Value.liushui.ToString());
+                        this.listView4.Items.Add(lvix);
+                    }
+
+
+                }
+                ListViewItem lvi = new ListViewItem("合计:");
+                lvi.SubItems.Add("");
+                lvi.SubItems.Add(fallq.ToString());
+                lvi.SubItems.Add(falll.ToString());
+                this.listView4.Items.Insert(0, lvi);
+                this.listView4.EndUpdate();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -308,10 +359,10 @@ namespace WeAtk
 
                     int nm = int.Parse(m);
                     int nmx = int.Parse(mx);
-                    int nv = int.Parse(v);
+                    float nv = float.Parse(v);
                     if (pp.value >= nm || pp.value <= nmx)
                     {
-                        int back = (int)pp.value * nv / 100;
+                        int back = (int)(pp.value * nv / 100);
                         pp.back += back;
                     }
                 }
@@ -324,10 +375,10 @@ namespace WeAtk
 
                     int nm = int.Parse(m);
                     int nmx = int.Parse(mx);
-                    int nv = int.Parse(v);
+                    float nv = float.Parse(v);
                     if (pp.value >= nm || pp.value <= nmx)
                     {
-                        int back = (int)pp.value * nv / 100;
+                        int back = (int)(pp.value * nv / 100);
                         pp.back += back;
                     }
                 }
@@ -339,10 +390,10 @@ namespace WeAtk
 
                     int nm = int.Parse(m);
                     int nmx = int.Parse(mx);
-                    int nv = int.Parse(v);
+                    float nv = float.Parse(v);
                     if (pp.value >= nm || pp.value <= nmx)
                     {
-                        int back = (int)pp.value * nv / 100;
+                        int back = (int)(pp.value * nv / 100);
                         pp.back += back;
                     }
                 }
@@ -354,10 +405,10 @@ namespace WeAtk
 
                     int nm = int.Parse(m);
                     int nmx = int.Parse(mx);
-                    int nv = int.Parse(v);
+                    float nv = float.Parse(v);
                     if (pp.value >= nm || pp.value <= nmx)
                     {
-                        int back = (int)pp.value * nv / 100;
+                        int back = (int)(pp.value * nv / 100);
                         pp.back += back;
                     }
                 }
@@ -546,7 +597,7 @@ namespace WeAtk
 
                 this.listView2.Items.Add(lvi);
             }
-
+            listView2.EndUpdate();
             label21.Text = fcc.ToString();
             label22.Text = fa.ToString();
 
@@ -621,10 +672,10 @@ namespace WeAtk
 
                     int nm = int.Parse(m);
                     int nmx = int.Parse(mx);
-                    int nv = int.Parse(v);
+                    float nv = float.Parse(v);
                     if (pp.value >= nm || pp.value <= nmx)
                     {
-                        int back = (int)pp.value * nv / 100;
+                        int back = (int)(pp.value * nv / 100);
                         pp.back += back;
                     }
                 }
@@ -637,10 +688,10 @@ namespace WeAtk
 
                     int nm = int.Parse(m);
                     int nmx = int.Parse(mx);
-                    int nv = int.Parse(v);
+                    float nv = float.Parse(v);
                     if (pp.value >= nm || pp.value <= nmx)
                     {
-                        int back = (int)pp.value * nv / 100;
+                        int back = (int)(pp.value * nv / 100);
                         pp.back += back;
                     }
                 }
@@ -652,10 +703,10 @@ namespace WeAtk
 
                     int nm = int.Parse(m);
                     int nmx = int.Parse(mx);
-                    int nv = int.Parse(v);
+                    float nv = float.Parse(v);
                     if (pp.value >= nm || pp.value <= nmx)
                     {
-                        int back = (int)pp.value * nv / 100;
+                        int back = (int)(pp.value * nv / 100);
                         pp.back += back;
                     }
                 }
@@ -667,10 +718,10 @@ namespace WeAtk
 
                     int nm = int.Parse(m);
                     int nmx = int.Parse(mx);
-                    int nv = int.Parse(v);
+                    float nv = float.Parse(v);
                     if (pp.value >= nm || pp.value <= nmx)
                     {
-                        int back = (int)pp.value * nv / 100;
+                        int back = (int)(pp.value * nv / 100);
                         pp.back += back;
                     }
                 }
@@ -698,6 +749,11 @@ namespace WeAtk
             }
 
             GameMgr.Instance().BroBack(ssback, checkBox9.Checked);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
