@@ -61,7 +61,7 @@ namespace WeAtk
                     }
                 }
 
-                if (cur == null) continue;
+                
 
                 ListViewItem lvi = new ListViewItem(playername);
                 lvi.SubItems.Add(nickname);
@@ -502,6 +502,20 @@ namespace WeAtk
             radioButton2.Checked = false;
             listView1.Visible = true;
             listView5.Visible = false;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (GameMgr.Instance().CurrentGame == 0)
+            {
+                GameMgr.Instance().MsgImg(Cpk10.Instance().getImg(Cpk10.Instance().list[0]));
+                GameMgr.Instance().MsgImg(Cpk10.Instance().getImg2());
+            }
+            else if (GameMgr.Instance().CurrentGame == 1)
+            {
+                GameMgr.Instance().MsgImg(feiting.Instance().getImg(feiting.Instance().list[0]));
+                GameMgr.Instance().MsgImg(feiting.Instance().getImg2());
+            }
         }
     }
 }

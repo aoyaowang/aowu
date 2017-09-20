@@ -30,6 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listView5 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -110,16 +120,7 @@
             this.colnick = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colplayer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.listView5 = new System.Windows.Forms.ListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button12 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -146,6 +147,76 @@
             this.groupBox1.Size = new System.Drawing.Size(608, 376);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // listView5
+            // 
+            this.listView5.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11});
+            this.listView5.FullRowSelect = true;
+            this.listView5.Location = new System.Drawing.Point(6, 20);
+            this.listView5.MultiSelect = false;
+            this.listView5.Name = "listView5";
+            this.listView5.Size = new System.Drawing.Size(596, 172);
+            this.listView5.TabIndex = 7;
+            this.listView5.UseCompatibleStateImageBehavior = false;
+            this.listView5.View = System.Windows.Forms.View.Details;
+            this.listView5.Visible = false;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "玩家";
+            this.columnHeader4.Width = 66;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "群昵称";
+            this.columnHeader5.Width = 118;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "类型";
+            this.columnHeader6.Width = 54;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "剩余粮草";
+            this.columnHeader7.Width = 62;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "回合";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "进攻记录";
+            this.columnHeader9.Width = 110;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "耗费粮草";
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "抢夺粮草";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(111, -2);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(71, 16);
+            this.radioButton2.TabIndex = 6;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "本期玩家";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // groupBox8
             // 
@@ -557,6 +628,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button12);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.label14);
@@ -891,75 +963,15 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // radioButton2
+            // button12
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(111, -2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 16);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "本期玩家";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // listView5
-            // 
-            this.listView5.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10,
-            this.columnHeader11});
-            this.listView5.FullRowSelect = true;
-            this.listView5.Location = new System.Drawing.Point(6, 20);
-            this.listView5.MultiSelect = false;
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(596, 172);
-            this.listView5.TabIndex = 7;
-            this.listView5.UseCompatibleStateImageBehavior = false;
-            this.listView5.View = System.Windows.Forms.View.Details;
-            this.listView5.Visible = false;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "玩家";
-            this.columnHeader4.Width = 66;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "群昵称";
-            this.columnHeader5.Width = 118;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "类型";
-            this.columnHeader6.Width = 54;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "剩余粮草";
-            this.columnHeader7.Width = 62;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "回合";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "进攻记录";
-            this.columnHeader9.Width = 110;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "耗费粮草";
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "抢夺粮草";
+            this.button12.Location = new System.Drawing.Point(0, 20);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(59, 39);
+            this.button12.TabIndex = 5;
+            this.button12.Text = "发送上期图片";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // startPanel
             // 
@@ -1092,5 +1104,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.Button button12;
     }
 }

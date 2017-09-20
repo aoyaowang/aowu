@@ -619,6 +619,7 @@ namespace WeAtk.Common
             string strZhang = "";
             foreach (Player p in Players)
             {
+                if (p.me == null) continue;
                 nTotal += (int)p.left;
                 strZhang += "★" + p.me._nickName + ":" + p.left.ToString() + "\n";
                 p.usedscore = 0;
@@ -863,7 +864,7 @@ namespace WeAtk.Common
                 Player user = null;
                 foreach (Player tmp in _player)
                 {
-                    if (tmp.me.UserName == msg.To)
+                    if (tmp.me!=null&&tmp.me.UserName == msg.To)
                     {
                         user = tmp;
                         break;

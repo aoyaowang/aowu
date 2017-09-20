@@ -36,6 +36,13 @@ namespace WeAtk
                 string nickname = (string)dr["nickname"];
                 string playertype = (string)dr["playertype"];
 
+                DateTime dt;
+                DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+                dtFormat.ShortDatePattern = "yyyy/MM/dd HH/mm/ss";
+                dt = Convert.ToDateTime(time, dtFormat);
+
+                if (dt.Ticks < dateTimePicker3.Value.Ticks || dt.Ticks > dateTimePicker4.Value.AddDays(1).Ticks) continue;
+
                 ListViewItem lvi = new ListViewItem(time);
                 lvi.SubItems.Add(playername);
                 lvi.SubItems.Add(nickname);
@@ -51,6 +58,7 @@ namespace WeAtk
         {
             this.BeginInvoke((Action)delegate ()
             {
+
                 DataTable data = Reader.Instance().ReadPlayerData("select * from msg order by msgtime desc");
                 if (data == null) return;
                 this.listView1.BeginUpdate();
@@ -64,6 +72,13 @@ namespace WeAtk
                     string playername = (string)dr["playername"];
                     string nickname = (string)dr["nickname"];
                     string playertype = (string)dr["playertype"];
+
+                    DateTime dt;
+                    DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+                    dtFormat.ShortDatePattern = "yyyy/MM/dd HH/mm/ss";
+                    dt = Convert.ToDateTime(time, dtFormat);
+
+                    if (dt.Ticks < dateTimePicker3.Value.Ticks || dt.Ticks > dateTimePicker4.Value.AddDays(1).Ticks) continue;
 
                     ListViewItem lvi = new ListViewItem(time);
                     lvi.SubItems.Add(playername);
@@ -754,6 +769,16 @@ namespace WeAtk
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateLog();
+        }
+
+        private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateLog();
         }
     }
 }
