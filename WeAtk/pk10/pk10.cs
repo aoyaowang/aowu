@@ -311,14 +311,38 @@ namespace WeAtk.pk10
         public FileStream getImg2()
         {
             int count = this.list.Count > 20 ? 20 : this.list.Count;
-            System.Drawing.Image imgSrc = new System.Drawing.Bitmap(900, (count) * 66);
+            System.Drawing.Image imgSrc = new System.Drawing.Bitmap(850 + 480, (count+1) * 66);
 
             using (Graphics g = Graphics.FromImage(imgSrc))
             {
                 Rectangle rect = new Rectangle(0, 0, imgSrc.Width, imgSrc.Height);
-                g.FillRectangle(Brushes.White, rect);
+                g.FillRectangle(Brushes.IndianRed, rect);
             }
-            for (int i = 0;i < count;++i)
+            using (Graphics g = Graphics.FromImage(imgSrc))
+            {
+                Rectangle rect = new Rectangle(0, 0, imgSrc.Width, 66);
+                g.FillRectangle(Brushes.Cyan, rect);
+            }
+            using (Graphics g = Graphics.FromImage(imgSrc))
+            {
+                Font font = new Font("Arial", 22);
+                Brush brush = System.Drawing.Brushes.Black;
+
+                StringFormat sf = new StringFormat();
+                sf.Alignment = StringAlignment.Center;
+                sf.LineAlignment = StringAlignment.Center;
+                g.DrawString("期号", font, brush, new Rectangle(0, 0, 200, 66), sf);
+
+                g.DrawString("开奖号码", font, brush, new Rectangle(200, 0, 600, 66), sf);
+
+                g.DrawString("冠亚", font, brush, new Rectangle(850, 0, 180, 66), sf);
+
+                g.DrawString("龙虎", font, brush, new Rectangle(1030, 0, 300, 66), sf);
+                //g.DrawString(d.num, font, brush, 0, (i + 1) * 66 + 3);
+
+                //g.DrawString(d.time, font, brush, 100, i * 66 + 3);
+            }
+            /*for (int i = 0;i < count;++i)
             {
                 using (Graphics g = Graphics.FromImage(imgSrc))
                 {
@@ -329,7 +353,7 @@ namespace WeAtk.pk10
             using (Graphics g = Graphics.FromImage(imgSrc))
             {
                 g.DrawLine(Pens.Gray, new Point(300, 0), new Point(300, imgSrc.Height));
-            }
+            }*/
 
             for (int i = 0; i < count; ++i) {
                 pk10data d = this.list[i];
@@ -337,21 +361,76 @@ namespace WeAtk.pk10
                 {
                     Font font = new Font("Arial", 18);
                     Brush brush = System.Drawing.Brushes.Black;
-                    g.DrawString(d.num, font, brush, 0, i * 66 + 3);
+
+                    StringFormat sf = new StringFormat();
+                    sf.Alignment = StringAlignment.Center;
+                    sf.LineAlignment = StringAlignment.Center;
+                    g.DrawString(d.num, font, brush, new Rectangle(0,(i+1)*66,200,66), sf);
+
+                    //g.DrawString(d.num, font, brush, 0, (i + 1) * 66 + 3);
 
                     //g.DrawString(d.time, font, brush, 100, i * 66 + 3);
                 }
                 string[] pkdata = d.data.Split(',');
+                int nGuanYa = 0;
+                string[] longhu = new string[5];
                 for (int x = 0; x < pkdata.Length; ++x)
                 {
+                    if (x == 0 || x == 1)
+                    {
+                        nGuanYa += int.Parse(pkdata[x]);
+                    }
+                    if (x < 5)
+                    {
+                        int nA = int.Parse(pkdata[x]);
+                        int nB = int.Parse(pkdata[9 - x]);
+                        longhu[x] = nA > nB ? "龙" : (nA == nB ? "和" : "虎");
+                    }
                     System.Drawing.Image imgxx = System.Drawing.Image.FromFile((@"data/pic/num_" + pkdata[x] + ".png"));
                     using (Graphics g = Graphics.FromImage(imgSrc))
                     {
-                        g.DrawImage(imgxx, new Rectangle(x * (imgxx.Width) + 301,
-                                                         i*66 +3,
+                        g.DrawImage(imgxx, new Rectangle(x * (imgxx.Width + 3) + 201,
+                                                         (i+1)*66 +3,
                                                          imgxx.Width,
                                                          imgxx.Height),
                                 0, 0, imgxx.Width, imgxx.Height, GraphicsUnit.Pixel);
+                    }
+                }
+                using (Graphics g = Graphics.FromImage(imgSrc))
+                {
+                    Font font = new Font("Arial", 18, FontStyle.Bold);
+                    Brush brush = System.Drawing.Brushes.Black;
+                    Brush brushblue = System.Drawing.Brushes.Blue;
+                    Brush brushpink = System.Drawing.Brushes.DeepPink;
+                    StringFormat sf = new StringFormat();
+                    sf.Alignment = StringAlignment.Center;
+                    sf.LineAlignment = StringAlignment.Center;
+                    g.DrawString(nGuanYa.ToString(), font, brush, new Rectangle(850, (i + 1) * 66, 60, 66), sf);
+
+                    if (nGuanYa % 2 == 0)
+                    {
+                        g.DrawString("双", font, brushpink, new Rectangle(850 + 60, (i + 1) * 66, 60, 66), sf);
+                    }
+                    else
+                    {
+                        g.DrawString("单", font, brushblue, new Rectangle(850 + 60, (i + 1) * 66, 60, 66), sf);
+                    }
+
+                    if (nGuanYa >= 12)
+                    {
+                        g.DrawString("大", font, brushpink, new Rectangle(850 + 120, (i + 1) * 66, 60, 66), sf);
+                    }
+                    else
+                    {
+                        g.DrawString("小", font, brushblue, new Rectangle(850 + 120, (i + 1) * 66, 60, 66), sf);
+                    }
+
+                    for (int xx = 0; xx < 5; ++xx)
+                    {
+                        if (longhu[xx] == "龙")
+                            g.DrawString(longhu[xx], font, brushpink, new Rectangle(850 + 180 + (xx*60), (i + 1) * 66, 60, 66), sf);
+                        else
+                            g.DrawString(longhu[xx], font, brushblue, new Rectangle(850 + 180 + (xx * 60), (i + 1) * 66, 60, 66), sf);
                     }
                 }
             }

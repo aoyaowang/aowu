@@ -56,6 +56,7 @@ namespace WeAtk
 
         public void UpdateLog()
         {
+            
             this.BeginInvoke((Action)delegate ()
             {
 
@@ -72,7 +73,12 @@ namespace WeAtk
                     string playername = (string)dr["playername"];
                     string nickname = (string)dr["nickname"];
                     string playertype = (string)dr["playertype"];
-
+                    if (msg.IndexOf("上粮-") >= 0) msg.Replace("上粮-", "下粮");
+                    if (comboBox2.Text != "全部")
+                    {
+                        if (msg.IndexOf(comboBox2.Text) == -1) continue;
+                    }
+                   
                     DateTime dt;
                     DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
                     dtFormat.ShortDatePattern = "yyyy/MM/dd HH/mm/ss";
@@ -108,7 +114,7 @@ namespace WeAtk
             DateTime dta;
             dta = dateTimePicker1.Value;
             DateTime dtb;
-            dtb = dateTimePicker2.Value;
+            dtb = dateTimePicker2.Value.AddDays(1);
             DataTable data = Reader.Instance().ReadPlayerData(sql + " order by 时间 desc");
             if (data == null) return;
 
@@ -248,7 +254,7 @@ namespace WeAtk
             DateTime dta;
             dta = dateTimePicker1.Value;
             DateTime dtb;
-            dtb = dateTimePicker2.Value;
+            dtb = dateTimePicker2.Value.AddDays(1);
             DataTable data = Reader.Instance().ReadPlayerData(sql + " order by 时间 desc");
             if (data == null) return;
 
@@ -462,7 +468,7 @@ namespace WeAtk
             DateTime dta;
             dta = dateTimePicker1.Value;
             DateTime dtb;
-            dtb = dateTimePicker2.Value;
+            dtb = dateTimePicker2.Value.AddDays(1);
             DataTable data = Reader.Instance().ReadPlayerData(sql + " order by 时间 desc");
             if (data == null) return;
 
@@ -547,7 +553,7 @@ namespace WeAtk
             DateTime dta;
             dta = dateTimePicker1.Value;
             DateTime dtb;
-            dtb = dateTimePicker2.Value;
+            dtb = dateTimePicker2.Value.AddDays(1);
             DataTable data = Reader.Instance().ReadPlayerData(sql + " order by 时间 desc");
             if (data == null) return;
 
@@ -777,6 +783,11 @@ namespace WeAtk
         }
 
         private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateLog();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateLog();
         }

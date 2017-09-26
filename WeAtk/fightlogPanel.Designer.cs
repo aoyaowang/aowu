@@ -116,6 +116,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -889,11 +890,26 @@
             this.dateTimePicker4.TabIndex = 20;
             this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
             // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "全部",
+            "上粮",
+            "下粮"});
+            this.comboBox2.Location = new System.Drawing.Point(435, 8);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 20);
+            this.comboBox2.TabIndex = 21;
+            this.comboBox2.Text = "全部";
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
             // fightlogPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 600);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.dateTimePicker4);
             this.Controls.Add(this.dateTimePicker3);
             this.Controls.Add(this.label23);
@@ -1021,5 +1037,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
