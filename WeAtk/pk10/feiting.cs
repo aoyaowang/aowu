@@ -362,12 +362,12 @@ namespace WeAtk.pk10
             using (Graphics g = Graphics.FromImage(imgSrc))
             {
                 Rectangle rect = new Rectangle(0, 0, imgSrc.Width, imgSrc.Height);
-                g.FillRectangle(Brushes.IndianRed, rect);
+                g.FillRectangle(Brushes.White, rect);
             }
             using (Graphics g = Graphics.FromImage(imgSrc))
             {
                 Rectangle rect = new Rectangle(0, 0, imgSrc.Width, 66);
-                g.FillRectangle(Brushes.Cyan, rect);
+                g.FillRectangle(Brushes.IndianRed, rect);
             }
             using (Graphics g = Graphics.FromImage(imgSrc))
             {

@@ -53,4 +53,3 @@ D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.Properties.Resources.resources
 D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.settingPanel.resources
 D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.startPanel.resources
 D:\Cocos\aowu\WeAtk\obj\Release\WeAtk.csproj.GenerateResource.Cache
-D:\aowu\WeAtk\obj\Release\WeAtk.csprojResolveAssemblyReference.cache
