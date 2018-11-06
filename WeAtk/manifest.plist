@@ -29,13 +29,13 @@
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
-				<string>com.leyou.lymj</string>
+				<string>com.leyou.lymjios</string>
 				<key>bundle-version</key>
 				<string>1.3.1</string>
 				<key>kind</key>
 				<string>software</string>
 				<key>title</key>
-				<string>乐娱麻将</string>
+				<string>乐娱茶苑</string>
 			</dict>
 		</dict>
 	</array>
